@@ -9,19 +9,21 @@
     tools:showIn="@layout/main">
 
     <LinearLayout
-        android:layout_width="376dp"
-        android:layout_height="269dp"
+        android:id="@+id/linearLayout"
+        android:layout_width="359dp"
+        android:layout_height="490dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="8dp">
+        tools:layout_editor_absoluteY="16dp">
 
         <EditText
-            android:id="@+id/editText3"
+            android:id="@+id/editText1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -29,7 +31,7 @@
             android:inputType="number" />
 
         <EditText
-            android:id="@+id/editText4"
+            android:id="@+id/editText2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -40,6 +42,18 @@
             android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="buttonClick"
             android:text="Find the NOD" />
+
+        <TextView
+            android:id="@+id/result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Result"
+            android:textAllCaps="true"
+            android:textSize="30sp"
+            android:textStyle="bold|italic" />
+
     </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>

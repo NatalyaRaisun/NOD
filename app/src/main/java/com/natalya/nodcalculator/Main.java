@@ -1,52 +1,39 @@
 package com.natalya.nodcalculator;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.widget.EditText;
+import android.widget.TextView;
 
 public class Main extends AppCompatActivity {
+    private static final String LOG = "logs";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
+    public void buttonClick(View v) {
+        EditText number1 = (EditText)findViewById(R.id.editText1);
+        EditText number2 = (EditText)findViewById(R.id.editText2);
+        TextView result = (TextView)findViewById(R.id.result);
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+        int num1 = Integer.parseInt(number1.getText().toString());
+        int num2 = Integer.parseInt(number2.getText().toString());
+        int resNod;
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        Log.i(LOG, "Find the NOD of numbers " + num1 + " " + num2);
+        int a = num1, b = num2;
+        while (b != 0) {
+            int c = a % b;
+            a = b;
+            b = c;
         }
-
-        return super.onOptionsItemSelected(item);
+        resNod = a;
+        Log.i(LOG, "NOD = " + resNod);
+        result.setText(Integer.toString(resNod));
     }
 }
