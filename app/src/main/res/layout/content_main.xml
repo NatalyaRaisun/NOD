@@ -45,15 +45,6 @@
             android:onClick="buttonClick"
             android:text="Find the NOD" />
 
-        <TextView
-            android:id="@+id/result"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Result"
-            android:textAllCaps="true"
-            android:textSize="30sp"
-            android:textStyle="bold|italic" />
-
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

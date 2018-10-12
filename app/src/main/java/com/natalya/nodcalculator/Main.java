@@ -1,14 +1,15 @@
 package com.natalya.nodcalculator;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 
 public class Main extends AppCompatActivity {
     private static final String LOG = "logs";
+    public static final String EXTRA_MESSAGE = "com.natalya.MESSAGE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,9 +18,11 @@ public class Main extends AppCompatActivity {
     }
 
     public void buttonClick(View v) {
-        EditText number1 = (EditText)findViewById(R.id.editText1);
-        EditText number2 = (EditText)findViewById(R.id.editText2);
-        TextView result = (TextView)findViewById(R.id.result);
+        Intent intent = new Intent(Main.this, AboutActivity.class);
+        startActivity(intent);
+
+        EditText number1 = (EditText) findViewById(R.id.editText1);
+        EditText number2 = (EditText) findViewById(R.id.editText2);
 
         int num1 = Integer.parseInt(number1.getText().toString());
         int num2 = Integer.parseInt(number2.getText().toString());
@@ -34,6 +37,9 @@ public class Main extends AppCompatActivity {
         }
         resNod = a;
         Log.i(LOG, "NOD = " + resNod);
-        result.setText(Integer.toString(resNod));
+
+        String message = Integer.toString(resNod);
+        intent.putExtra(EXTRA_MESSAGE, message);
+        startActivity(intent);
     }
 }
