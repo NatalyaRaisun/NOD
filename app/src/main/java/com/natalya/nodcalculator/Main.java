@@ -7,15 +7,32 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
+
 public class Main extends AppCompatActivity {
+
     private static final String LOG = "logs";
     public static final String EXTRA_MESSAGE = "com.natalya.MESSAGE";
+    private static final String KEY1 = "NUM1";
+    private static final String KEY2 = "NUM2";
+    int num1, num2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
     }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        Log.d(LOG, "Devise rotation");
+        Log.d(LOG, "num 1 = " + num1);
+        Log.d(LOG, "num 2 = " + num2);
+        outState.putInt(KEY1, num1);
+        outState.putInt(KEY2, num2);
+
+    }
+
 
     public void buttonClick(View v) {
         Intent intent = new Intent(Main.this, AboutActivity.class);
