@@ -5,7 +5,11 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class Main extends AppCompatActivity {
@@ -16,10 +20,14 @@ public class Main extends AppCompatActivity {
     private static final String KEY2 = "NUM2";
     int num1, num2;
 
+    private NodHistory history = new NodHistory();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+
+
     }
 
     @Override
@@ -30,13 +38,12 @@ public class Main extends AppCompatActivity {
         Log.d(LOG, "num 2 = " + num2);
         outState.putInt(KEY1, num1);
         outState.putInt(KEY2, num2);
-
     }
 
 
     public void buttonClick(View v) {
         Intent intent = new Intent(Main.this, AboutActivity.class);
-        startActivity(intent);
+        //startActivity(intent);
 
         EditText number1 = (EditText) findViewById(R.id.editText1);
         EditText number2 = (EditText) findViewById(R.id.editText2);
@@ -53,6 +60,11 @@ public class Main extends AppCompatActivity {
             b = c;
         }
         resNod = a;
+
+        NodResult result = new NodResult(num1, num2, resNod);
+        history.addResult(result);
+        history.printHistory();
+
         Log.i(LOG, "NOD = " + resNod);
 
         String message = Integer.toString(resNod);
